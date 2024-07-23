@@ -38,14 +38,22 @@ let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
   if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "scissors" && computerChoice == "paper")) {
-    roundWinner = "You won! Computer loses.";
+    humanScore++
+    roundWinner = `You won! The score is ${humanScore} to ${computerScore}.`;
   } else if ((humanChoice == "rock" && computerChoice == "paper") || (humanChoice == "paper" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "rock")) {
-    roundWinner = "You lost! Computer wins.";
+    computerScore++
+    roundWinner = `You lost! The score is ${humanScore} to ${computerScore}.`;
   } else {
-    roundWinner = "Nobody wins! It's a draw.";
+    roundWinner = `It's a draw! The score is ${humanScore} to ${computerScore}.`;
   }
   
   return roundWinner;
 }
 
-console.log(playRound(humanSelection, computerSelection));
+function playGame() {
+  for (let i = 0; i < 6; i++) {
+    return playRound(humanSelection, computerSelection);
+  }
+}
+
+console.log(playGame());
